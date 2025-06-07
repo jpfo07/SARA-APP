@@ -122,5 +122,13 @@ export const friendsAPI = {
     };
     mockFriends.push(newFriend);
     return newFriend;
+  },
+
+  async removeFriend(userId: number, friendId: number) {
+    const initialLength = mockFriends.length;
+    mockFriends = mockFriends.filter(
+      f => !(f.userId === userId && f.friendId === friendId)
+    );
+    return mockFriends.length < initialLength; 
   }
 };
